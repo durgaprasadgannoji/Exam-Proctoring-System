@@ -79,11 +79,11 @@ function App() {
 initial={{ opacity: 0, y: 50 }}
 animate={{ opacity: 1, y: 0 }}
 transition={{ duration: 1 }}
-className="max-w-6xl mx-auto px-6 pt-32 pb-20"
+className="max-w-6xl mx-auto px-6 pt-40 md:pt-32 pb-20"
 
 >
 
-  <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+  <div className="flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
 
 {/* Profile Image */}
 <motion.img
@@ -91,20 +91,20 @@ className="max-w-6xl mx-auto px-6 pt-32 pb-20"
   initial={{ scale: 0 }}
   animate={{ scale: 1 }}
   transition={{ duration: 0.8 }}
-  className="w-60 h-60 rounded-full border-4 border-blue-500 object-cover shadow-2xl"
+  className="w-48 h-48 md:w-60 md:h-60 rounded-full border-4 border-blue-500 object-cover shadow-2xl"
 />
 
 {/* Hero Content */}
 <div className="flex-1">
 
-  <motion.h1
-    initial={{ opacity: 0, x: -50 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ delay: 0.3 }}
-    className="text-5xl md:text-6xl font-bold"
-  >
-    Gannoji Durga Prasad
-  </motion.h1>
+ <motion.h1
+  initial={{ opacity: 0, x: -50 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ delay: 0.3 }}
+  className="text-4xl md:text-6xl font-bold leading-tight"
+>
+  Gannoji Durga Prasad
+</motion.h1>
 
   <p className="mt-4 text-xl text-blue-400">
     AI/ML Engineer • Backend Developer • Python Developer
@@ -149,7 +149,7 @@ className="max-w-6xl mx-auto px-6 pt-32 pb-20"
   </div>
 
   {/* Buttons */}
-  <div className="flex gap-4 mt-8">
+  <div className="flex flex-col sm:flex-row gap-4 mt-8">
 
     <a
       href="#projects"
@@ -196,7 +196,7 @@ className="max-w-6xl mx-auto px-6 py-16"
       </motion.section>
 
       {/* Skills */}
-     <section id="skills" className="max-w-6xl mx-auto px-6 pt-32 pb-20">
+     <section id="skills" className="max-w-6xl mx-auto px-6 pt-40 md:pt-32 pb-20">
 
   <h2 className="text-4xl font-bold text-center mb-12">
     My Skills
@@ -348,7 +348,7 @@ duration-300
 
      {/* Projects */}
 
-<section id="projects" className="max-w-6xl mx-auto px-6 pt-32 pb-20">
+<section id="projects" className="max-w-6xl mx-auto px-6 pt-40 md:pt-32 pb-20">
 
 <motion.h2
 initial={{ opacity: 0, y: -30 }}
@@ -531,7 +531,7 @@ Featured Projects
 
 
       {/* Education */}
-      <section id="journey" className="max-w-6xl mx-auto px-6 pt-32 pb-20">
+      <section id="journey" className="max-w-6xl mx-auto px-6 pt-40 md:pt-32 pb-20">
 
 <motion.h2
 initial={{ opacity: 0, y: -30 }}
@@ -766,7 +766,7 @@ Achievements & Activities
 
       {/* Contact */}
 
-<section id="contact" className="max-w-6xl mx-auto px-6 pt-32 pb-20">
+<section id="contact" className="max-w-6xl mx-auto px-6 pt-40 md:pt-32 pb-20">
 
 <motion.h2
 initial={{ opacity: 0, y: -30 }}
