@@ -648,7 +648,6 @@ Education Journey
 >
   <img
     src="/education.png"
-    alt="Education"
     className="w-80 md:w-96 floating drop-shadow-[0_0_25px_rgba(59,130,246,0.5)]"
   />
 </motion.div>
