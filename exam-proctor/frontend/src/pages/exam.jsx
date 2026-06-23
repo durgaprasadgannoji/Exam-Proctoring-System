@@ -1,14 +1,46 @@
 import { useState, useEffect } from "react";
 
 function Exam() {
- const [timeLeft, setTimeLeft] = useState(3600);
-const [violations, setViolations] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(3600);
+  const [violations, setViolations] = useState(0);
+
+  const questions = [
+    {
+      question: 'What is the output of console.log(2 + "2")?',
+      options: ["4", "22", "Error"],
+    },
+    {
+      question: "Which company developed React?",
+      options: ["Google", "Facebook", "Microsoft"],
+    },
+    {
+      question: "Which hook is used for state management?",
+      options: ["useState", "useEffect", "useRef"],
+    },
+    {
+      question: "Which language runs in browser?",
+      options: ["Python", "Java", "JavaScript"],
+    },
+    {
+      question: "What does HTML stand for?",
+      options: [
+        "Hyper Text Markup Language",
+        "High Text Machine Language",
+        "Hyper Transfer Markup Language",
+      ],
+    },
+  ];
+
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [answers, setAnswers] = useState({});
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
           clearInterval(timer);
-          alert("Exam Submitted Automatically");
+          submitExam();
           return 0;
         }
         return prev - 1;
@@ -17,6 +49,60 @@ const [violations, setViolations] = useState(0);
 
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (document.hidden) {
+        setViolations((prev) => prev + 1);
+        console.log("⚠️ Tab Switch Detected");
+      }
+    };
+
+    document.addEventListener(
+      "visibilitychange",
+      handleVisibility
+    );
+
+    return () =>
+      document.removeEventListener(
+        "visibilitychange",
+        handleVisibility
+      );
+  }, []);
+
+  const submitExam = () => {
+    alert("🎉 Exam Completed Successfully");
+
+    console.log("Submitted Answers:", answers);
+
+    window.location.href = "/";
+  };
+
+  const handleNext = () => {
+    const updatedAnswers = {
+      ...answers,
+      [currentQuestion]: selectedAnswer,
+    };
+
+    setAnswers(updatedAnswers);
+
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+
+      setSelectedAnswer(
+        updatedAnswers[currentQuestion + 1] || ""
+      );
+    } else {
+      alert("🎉 Exam Submitted Successfully");
+
+      console.log(
+        "Final Answers:",
+        updatedAnswers
+      );
+
+      window.location.href = "/";
+    }
+  };
 
   const mins = Math.floor(timeLeft / 60);
   const secs = timeLeft % 60;
@@ -47,16 +133,28 @@ const [violations, setViolations] = useState(0);
         </h2>
       </div>
 
-<h3>Violations</h3>
+      <h2
+        style={{
+          textAlign: "center",
+          marginTop: "20px",
+        }}
+      >
+        Violations
+      </h2>
 
-<p
-  style={{
-    color: violations > 0 ? "red" : "lightgreen",
-    fontWeight: "bold",
-  }}
->
-  {violations}
-</p>
+      <p
+        style={{
+          textAlign: "center",
+          color:
+            violations > 0
+              ? "red"
+              : "lightgreen",
+          fontWeight: "bold",
+          fontSize: "28px",
+        }}
+      >
+        {violations}
+      </p>
 
       <div
         style={{
@@ -72,21 +170,32 @@ const [violations, setViolations] = useState(0);
             padding: "20px",
           }}
         >
-          <h3>Questions</h3>
+          <h2>Questions</h2>
 
-          <button>Q1</button>
-          <br /><br />
+          {questions.map((_, index) => (
+            <div key={index}>
+              <button
+                onClick={() =>
+                  setCurrentQuestion(index)
+                }
+                style={{
+                  background:
+                    currentQuestion === index
+                      ? "#2563eb"
+                      : "gray",
+                  color: "white",
+                  padding: "10px 15px",
+                  border: "none",
+                  borderRadius: "5px",
+                }}
+              >
+                Q{index + 1}
+              </button>
 
-          <button>Q2</button>
-          <br /><br />
-
-          <button>Q3</button>
-          <br /><br />
-
-          <button>Q4</button>
-          <br /><br />
-
-          <button>Q5</button>
+              <br />
+              <br />
+            </div>
+          ))}
         </div>
 
         {/* Question Area */}
@@ -94,48 +203,72 @@ const [violations, setViolations] = useState(0);
           style={{
             flex: 1,
             padding: "40px",
+            textAlign: "center",
           }}
         >
-          <h2>Question 1</h2>
+          <h1>
+            Question {currentQuestion + 1}
+          </h1>
 
-          <p>
-            What is the output of:
-            <br />
-            console.log(2 + "2")
+          <p
+            style={{
+              fontSize: "22px",
+            }}
+          >
+            {
+              questions[currentQuestion]
+                .question
+            }
           </p>
 
-          <div>
-            <label>
-              <input type="radio" name="q1" /> 4
-            </label>
+          {questions[
+            currentQuestion
+          ].options.map((option) => (
+            <div key={option}>
+              <label
+                style={{
+                  fontSize: "20px",
+                }}
+              >
+                <input
+                  type="radio"
+                  name={`q${currentQuestion}`}
+                  value={option}
+                  checked={
+                    selectedAnswer === option
+                  }
+                  onChange={(e) =>
+                    setSelectedAnswer(
+                      e.target.value
+                    )
+                  }
+                />
 
-            <br /><br />
+                {" "}
+                {option}
+              </label>
 
-            <label>
-              <input type="radio" name="q1" /> 22
-            </label>
-
-            <br /><br />
-
-            <label>
-              <input type="radio" name="q1" /> Error
-            </label>
-          </div>
-
-          <br />
-
-
+              <br />
+              <br />
+            </div>
+          ))}
 
           <button
+            onClick={handleNext}
             style={{
               background: "#2563eb",
               color: "white",
-              padding: "12px 25px",
+              padding: "15px 30px",
               border: "none",
-              borderRadius: "8px",
+              borderRadius: "10px",
+              fontSize: "18px",
+              cursor: "pointer",
             }}
           >
-            Save & Next
+            {currentQuestion ===
+            questions.length - 1
+              ? "Submit Exam"
+              : "Save & Next"}
           </button>
         </div>
 
@@ -147,7 +280,7 @@ const [violations, setViolations] = useState(0);
             padding: "20px",
           }}
         >
-          <h3>Proctor Status</h3>
+          <h2>Proctor Status</h2>
 
           <p>📷 Camera Active</p>
           <p>🖥 Screen Sharing Active</p>
@@ -158,17 +291,5 @@ const [violations, setViolations] = useState(0);
     </div>
   );
 }
-
-document.addEventListener(
-  "visibilitychange",
-  () => {
-    if (document.hidden) {
-      console.log(
-        "⚠️ Tab Switch"
-      );
-    }
-  }
-);
-
 
 export default Exam;
