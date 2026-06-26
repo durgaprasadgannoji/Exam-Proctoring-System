@@ -419,6 +419,8 @@ Featured Projects
 
   </div>
 </motion.div>
+
+
 {/* Exam Proctoring */}
 <a
   href="https://xam-proctor.netlify.app/"
@@ -433,7 +435,7 @@ Featured Projects
     className="bg-gray-900/70 backdrop-blur-lg border border-gray-800 rounded-2xl overflow-hidden cursor-pointer"
   >
     <img
-      src="\proctoring-system.png"
+      src="/proctoring-system.png"
       alt="Exam Proctoring System"
       className="w-full h-52 object-cover"
     />
