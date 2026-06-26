@@ -103,7 +103,7 @@ className="max-w-6xl mx-auto px-6 pt-40 md:pt-32 pb-20"
   transition={{ delay: 0.3 }}
   className="text-4xl md:text-6xl font-bold leading-tight"
 >
-  Gannoji Durga Prasad
+  Gannojii Durga Prasad
 </motion.h1>
 
   <p className="mt-4 text-xl text-blue-400">
@@ -459,14 +459,16 @@ Featured Projects
       </span>
     </div>
 
-  <a
-  href="https://xam-proctor.netlify.app/"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-flex items-center gap-2 mt-6 text-blue-400 hover:text-blue-300"
->
-  View Project →
-</a>
+    <a
+      href="https://github.com/durgaprasadgannoji"
+      target="_blank"
+      rel="noreferrer"
+      className="inline-flex items-center gap-2 mt-6 text-blue-400 hover:text-blue-300"
+    >
+      <FaGithub />
+      View Project
+    </a>
+
   </div>
 </motion.div>
 
