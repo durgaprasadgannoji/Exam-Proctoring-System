@@ -419,58 +419,57 @@ Featured Projects
 
   </div>
 </motion.div>
-
 {/* Exam Proctoring */}
-<motion.div
-  initial={{ opacity: 0, y: 50 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  whileHover={{ scale: 1.03, y: -10 }}
-  className="bg-gray-900/70 backdrop-blur-lg border border-gray-800 rounded-2xl overflow-hidden"
+<a
+  href="https://xam-proctor.netlify.app/"
+  target="_blank"
+  rel="noopener noreferrer"
 >
-  <img
-    src="\public\proctoring-system.png"
-    alt="Exam Proctoring"
-    className="w-full h-52 object-cover"
-  />
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    whileHover={{ scale: 1.03, y: -10 }}
+    className="bg-gray-900/70 backdrop-blur-lg border border-gray-800 rounded-2xl overflow-hidden cursor-pointer"
+  >
+    <img
+      src="\public\proctoring-system.png"
+      alt="Exam Proctoring System"
+      className="w-full h-52 object-cover"
+    />
 
-  <div className="p-6">
+    <div className="p-6">
+      <h3 className="text-2xl font-bold">
+        Exam Proctoring System
+      </h3>
 
-    <h3 className="text-2xl font-bold">
-      Exam Proctoring System
-    </h3>
+      <p className="mt-3 text-gray-400">
+        AI-powered online examination monitoring system using
+        OpenCV, MediaPipe, face detection, gaze tracking,
+        tab switching detection, and automated alerts.
+      </p>
 
-    <p className="mt-3 text-gray-400">
-      AI-powered online examination monitoring system using
-      OpenCV, MediaPipe and automated alerts.
-    </p>
+      <div className="flex flex-wrap gap-2 mt-4">
+        <span className="bg-red-600/20 text-red-400 px-3 py-1 rounded-full text-sm">
+          OpenCV
+        </span>
 
-    <div className="flex flex-wrap gap-2 mt-4">
-      <span className="bg-red-600/20 text-red-400 px-3 py-1 rounded-full text-sm">
-        OpenCV
-      </span>
+        <span className="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm">
+          MediaPipe
+        </span>
 
-      <span className="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm">
-        MediaPipe
-      </span>
+        <span className="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">
+          Python
+        </span>
+      </div>
 
-      <span className="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">
-        Python
-      </span>
+      <p className="inline-flex items-center gap-2 mt-6 text-blue-400">
+        🚀 Live Demo →
+      </p>
     </div>
+  </motion.div>
+</a>
 
-    <a
-      href="https://github.com/durgaprasadgannoji"
-      target="_blank"
-      rel="noreferrer"
-      className="inline-flex items-center gap-2 mt-6 text-blue-400 hover:text-blue-300"
-    >
-      <FaGithub />
-      View Project
-    </a>
-
-  </div>
-</motion.div>
 
 {/* Sentiment Analysis */}
 <motion.div
